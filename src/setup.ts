@@ -67,9 +67,9 @@ async function setup() {
     return;
   }
   core.info(`Correct checksum: ${calculatedChecksum}`);
+  core.info(`sccachePackage path: ${sccachePackage}`);
 
   let sccachePath;
-  core.info(`sccachePackage checksum: ${sccachePackage}`);
   if (getExtension() == 'zip') {
     sccachePath = await extractZip(sccachePackage);
   } else {
