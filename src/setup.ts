@@ -47,7 +47,9 @@ async function setup() {
   core.info(`sccache download from url: ${downloadUrl}`);
 
   // Download and extract.
-  const sccachePackage = await downloadTool(downloadUrl);
+  var downloaded = await downloadTool(downloadUrl);
+  const sccachePackage = downloaded + (getExtension() === 'zip' ? '.zip' : '');
+  fs.promises.rename(downloaded, sccachePackage);
   const sha256File = await downloadTool(sha256Url);
 
   // Calculate the SHA256 checksum of the downloaded file.
